@@ -51,7 +51,6 @@ Workload options:
   --shape <value>            Override shape
   --rtol <value>            Override rtol
   --atol <value>            Override atol
-  --tolerance-rel <value>            Override tolerance_rel
   --num-iterations <value>            Override num_iterations
   --seed <value>            Override seed
 
@@ -93,7 +92,6 @@ DTYPE=""
 SHAPE=""
 RTOL=""
 ATOL=""
-TOLERANCE_REL=""
 NUM_ITERATIONS=""
 SEED=""
 
@@ -122,7 +120,6 @@ while [[ $# -gt 0 ]]; do
     --shape) SHAPE="${2:-}"; shift 2 ;;
     --rtol) RTOL="${2:-}"; shift 2 ;;
     --atol) ATOL="${2:-}"; shift 2 ;;
-    --tolerance-rel) TOLERANCE_REL="${2:-}"; shift 2 ;;
     --num-iterations) NUM_ITERATIONS="${2:-}"; shift 2 ;;
     --seed) SEED="${2:-}"; shift 2 ;;
     --help|--specification|--matrix-definition) shift ;;
@@ -169,7 +166,6 @@ DTYPE="${DTYPE:-$(yaml_get dtype)}"
 SHAPE="${SHAPE:-$(yaml_get shape)}"
 RTOL="${RTOL:-$(yaml_get rtol)}"
 ATOL="${ATOL:-$(yaml_get atol)}"
-TOLERANCE_REL="${TOLERANCE_REL:-$(yaml_get tolerance_rel)}"
 NUM_ITERATIONS="${NUM_ITERATIONS:-$(yaml_get num_iterations)}"
 SEED="${SEED:-$(yaml_get seed)}"
 OUTPUT_FORMAT="${OUTPUT_FORMAT:-$(yaml_get output_format)}"
@@ -183,7 +179,6 @@ BENCHMARK_RUN_COMMAND="bash run_benchmark.sh --${PROFILE}"
 [[ -n "${SHAPE}" ]] && BENCHMARK_RUN_COMMAND+=" --shape $(printf %q "${SHAPE}")"
 [[ -n "${RTOL}" ]] && BENCHMARK_RUN_COMMAND+=" --rtol $(printf %q "${RTOL}")"
 [[ -n "${ATOL}" ]] && BENCHMARK_RUN_COMMAND+=" --atol $(printf %q "${ATOL}")"
-[[ -n "${TOLERANCE_REL}" ]] && BENCHMARK_RUN_COMMAND+=" --tolerance-rel $(printf %q "${TOLERANCE_REL}")"
 [[ -n "${NUM_ITERATIONS}" ]] && BENCHMARK_RUN_COMMAND+=" --num-iterations $(printf %q "${NUM_ITERATIONS}")"
 [[ -n "${SEED}" ]] && BENCHMARK_RUN_COMMAND+=" --seed $(printf %q "${SEED}")"
 set_benchmark_run_command "${BENCHMARK_RUN_COMMAND}"
@@ -234,7 +229,6 @@ run_collection() {
   grep -q -- '--shape' <<<"${help}" && collect_args+=(--shape "${SHAPE}")
   grep -q -- '--rtol' <<<"${help}" && collect_args+=(--rtol "${RTOL}")
   grep -q -- '--atol' <<<"${help}" && collect_args+=(--atol "${ATOL}")
-  grep -q -- '--tolerance-rel' <<<"${help}" && collect_args+=(--tolerance-rel "${TOLERANCE_REL}")
   grep -q -- '--num-iterations' <<<"${help}" && collect_args+=(--num-iterations "${NUM_ITERATIONS}")
   grep -q -- '--seed' <<<"${help}" && collect_args+=(--seed "${SEED}")
 

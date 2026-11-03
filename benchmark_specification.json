@@ -57,7 +57,7 @@
   {
     "field_name": "Execution Description With Parameters",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Dispatches scripts/collect_tensor_ops.py to compare GPU matmul/conv2d against a CPU FP64 reference. device_id: torch CUDA device. op_name: yaml matmul,conv2d. dtype: yaml tokens f16_r, bf16_r, f32_r (smoke f16_r; baseline/extended f16_r,bf16_r,f32_r). shape: tensor dimensions. rtol/atol/tolerance_rel: comparison gates. num_iterations: randomized inputs per case. seed: RNG seed. This is not pytest test_ops.py"
+    "value": "Dispatches scripts/collect_tensor_ops.py to compare GPU matmul/conv2d against a CPU FP64 reference. device_id: torch CUDA device. op_name: yaml matmul,conv2d. dtype: yaml tokens f16_r, bf16_r, f32_r (smoke f16_r; baseline/extended f16_r,bf16_r,f32_r). shape: tensor dimensions. rtol/atol/. num_iterations: randomized inputs per case. seed: RNG seed. This is not pytest test_ops.py"
   },
   {
     "field_name": "Execution Domain",
@@ -102,17 +102,17 @@
   {
     "field_name": "run_benchmark Command Plus Options for Smoke Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --smoke --validate --device-id 0 --op-name matmul,conv2d --dtype f16_r --shape matmul=1x128x128;conv2d=1x3x32x32 --rtol 0.02 --atol 0.1 --tolerance-rel 0.001 --num-iterations 2 --seed 42"
+    "value": "bash run_benchmark.sh --smoke --validate --device-id 0 --op-name matmul,conv2d --dtype f16_r --shape matmul=1x128x128;conv2d=1x3x32x32 --rtol 0.02 --atol 0.1 --num-iterations 2 --seed 42"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Baseline Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --baseline --validate --device-id 0 --op-name matmul,conv2d --dtype f16_r,bf16_r,f32_r --shape matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64 --rtol f16_r=0.02,bf16_r=0.02,f32_r=1e-05 --atol f16_r=0.1,bf16_r=0.5,f32_r=1e-03 --tolerance-rel 0.001 --num-iterations 50 --seed 42"
+    "value": "bash run_benchmark.sh --baseline --validate --device-id 0 --op-name matmul,conv2d --dtype f16_r,bf16_r,f32_r --shape matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64 --rtol f16_r=0.02,bf16_r=0.02,f32_r=1e-05 --atol f16_r=0.1,bf16_r=0.5,f32_r=1e-03 --num-iterations 50 --seed 42"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Extended Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --extended --validate --device-id 0 --op-name matmul,conv2d --dtype f16_r,bf16_r,f32_r --shape matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64 --rtol f16_r=0.02,bf16_r=0.02,f32_r=1e-05 --atol f16_r=0.1,bf16_r=0.5,f32_r=1e-03 --tolerance-rel 0.001 --num-iterations 100 --seed 42"
+    "value": "bash run_benchmark.sh --extended --validate --device-id 0 --op-name matmul,conv2d --dtype f16_r,bf16_r,f32_r --shape matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64 --rtol f16_r=0.02,bf16_r=0.02,f32_r=1e-05 --atol f16_r=0.1,bf16_r=0.5,f32_r=1e-03 --num-iterations 100 --seed 42"
   },
   {
     "field_name": "Output Fields / Metrics to Parse",
@@ -257,17 +257,17 @@
   {
     "field_name": "Parameter_07",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "tolerance_rel"
+    "value": "num_iterations"
   },
   {
     "field_name": "Parameter_08",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "num_iterations"
+    "value": "seed"
   },
   {
     "field_name": "Parameter_09",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "seed"
+    "value": "-"
   },
   {
     "field_name": "Parameter_10",
@@ -407,7 +407,7 @@
   {
     "field_name": "Profile Parameter Values",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Parameters_SmokeBaselineExtend",
-    "value": "{\"device_id\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\", \"notes\": \"\"}, \"op_name\": {\"smoke\": \"matmul,conv2d\", \"baseline\": \"matmul,conv2d\", \"extended\": \"matmul,conv2d\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"dtype\": {\"smoke\": \"f16_r\", \"baseline\": \"f16_r,bf16_r,f32_r\", \"extended\": \"f16_r,bf16_r,f32_r\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"shape\": {\"smoke\": \"matmul=1x128x128;conv2d=1x3x32x32\", \"baseline\": \"matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64\", \"extended\": \"matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"rtol\": {\"smoke\": \"0.02\", \"baseline\": \"f16_r=0.02,bf16_r=0.02,f32_r=1e-05\", \"extended\": \"f16_r=0.02,bf16_r=0.02,f32_r=1e-05\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"atol\": {\"smoke\": \"0.1\", \"baseline\": \"f16_r=0.1,bf16_r=0.5,f32_r=1e-03\", \"extended\": \"f16_r=0.1,bf16_r=0.5,f32_r=1e-03\", \"notes\": \"FP32 8x512x512 uses atol 1e-3. Sweep/list flags are documentary; omit them so yaml expands. Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"num_iterations\": {\"smoke\": \"2\", \"baseline\": \"50\", \"extended\": \"100\", \"notes\": \"H100 2026-08-16 num_iterations=16 -> 232s (3:52). Do not copy AMD 700. Extended 50 already measured 10:04 earlier today, not retested. Retimed 2026-08-17 toward 3-4 min baseline; extended scaled by the same factor.\"}, \"seed\": {\"smoke\": \"42\", \"baseline\": \"42\", \"extended\": \"42\", \"notes\": \"\"}, \"tolerance_rel\": {\"smoke\": \"0.001\", \"baseline\": \"0.001\", \"extended\": \"0.001\", \"notes\": \"\"}}"
+    "value": "{\"device_id\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\", \"notes\": \"\"}, \"op_name\": {\"smoke\": \"matmul,conv2d\", \"baseline\": \"matmul,conv2d\", \"extended\": \"matmul,conv2d\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"dtype\": {\"smoke\": \"f16_r\", \"baseline\": \"f16_r,bf16_r,f32_r\", \"extended\": \"f16_r,bf16_r,f32_r\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"shape\": {\"smoke\": \"matmul=1x128x128;conv2d=1x3x32x32\", \"baseline\": \"matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64\", \"extended\": \"matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"rtol\": {\"smoke\": \"0.02\", \"baseline\": \"f16_r=0.02,bf16_r=0.02,f32_r=1e-05\", \"extended\": \"f16_r=0.02,bf16_r=0.02,f32_r=1e-05\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"atol\": {\"smoke\": \"0.1\", \"baseline\": \"f16_r=0.1,bf16_r=0.5,f32_r=1e-03\", \"extended\": \"f16_r=0.1,bf16_r=0.5,f32_r=1e-03\", \"notes\": \"FP32 8x512x512 uses atol 1e-3. Sweep/list flags are documentary; omit them so yaml expands. Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"num_iterations\": {\"smoke\": \"2\", \"baseline\": \"50\", \"extended\": \"100\", \"notes\": \"H100 2026-08-16 num_iterations=16 -> 232s (3:52). Do not copy AMD 700. Extended 50 already measured 10:04 earlier today, not retested. Retimed 2026-08-17 toward 3-4 min baseline; extended scaled by the same factor.\"}, \"seed\": {\"smoke\": \"42\", \"baseline\": \"42\", \"extended\": \"42\", \"notes\": \"\"}}"
   },
   {
     "field_name": "Profile Command Authorship",

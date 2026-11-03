@@ -2,7 +2,7 @@
 
 ## Execution Description
 
-Dispatches scripts/collect_tensor_ops.py to compare GPU matmul/conv2d against a CPU FP64 reference. device_id: torch CUDA device. op_name: yaml matmul,conv2d. dtype: yaml tokens f16_r, bf16_r, f32_r (smoke f16_r; baseline/extended f16_r,bf16_r,f32_r). Sweep dimensions: device_id, op_name, dtype, shape, rtol, atol, tolerance_rel, num_iterations.
+Dispatches scripts/collect_tensor_ops.py to compare GPU matmul/conv2d against a CPU FP64 reference. device_id: torch CUDA device. op_name: yaml matmul,conv2d. dtype: yaml tokens f16_r, bf16_r, f32_r (smoke f16_r; baseline/extended f16_r,bf16_r,f32_r). Sweep dimensions: device_id, op_name, dtype, shape, rtol, atol, num_iterations, seed.
 
 ## Parameters
 
@@ -14,7 +14,6 @@ Dispatches scripts/collect_tensor_ops.py to compare GPU matmul/conv2d against a 
 | shape | `--shape` | smoke=matmul=1x128x128;conv2d=1x3x32x32, baseline=matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64, extended=matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64 | matmul=1x128x128,8x512x512;conv2d=1x3x32x32,8x3x64x64 | From Parameter list; see Execution Description With Parameters. |
 | rtol | `--rtol` | smoke=0.02, baseline=f16_r=0.02,bf16_r=0.02,f32_r=1e-05, extended=f16_r=0.02,bf16_r=0.02,f32_r=1e-05 | f16_r=0.02,bf16_r=0.02,f32_r=1e-05 | From Parameter list; see Execution Description With Parameters. |
 | atol | `--atol` | smoke=0.1, baseline=f16_r=0.1,bf16_r=0.5,f32_r=1e-03, extended=f16_r=0.1,bf16_r=0.5,f32_r=1e-03 | f16_r=0.1,bf16_r=0.5,f32_r=1e-03 | From Parameter list; see Execution Description With Parameters. |
-| tolerance_rel | `--tolerance-rel` | smoke=0.001, baseline=0.001, extended=0.001 | 0.001 | From Parameter list; see Execution Description With Parameters. |
 | num_iterations | `--num-iterations` | smoke=2, baseline=50, extended=100 | 50 | From Parameter list; see Execution Description With Parameters. |
 | seed | `--seed` | smoke=42, baseline=42, extended=42 | 42 | From Parameter list; see Execution Description With Parameters. |
 
