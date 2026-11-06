@@ -20,7 +20,7 @@ Dispatches scripts/collect_tensor_ops.py to compare GPU matmul/conv2d against a 
 ## Invocation
 
 ```bash
-Run local PyTorch CUDA matmul/conv2d correctness checks versus a CPU FP64 reference. Does not run pytest or the official PyTorch Operator Correctness test_ops.py suite
+Run scripts/collect_tensor_ops.py in the repo .venv: GPU matmul/conv2d vs CPU FP64 per op, dtype, and shape
 ```
 
 ## Raw Output Format
@@ -44,12 +44,12 @@ Dispatches scripts/collect_tensor_ops.py to compare GPU matmul/conv2d against a 
 
 ## Installation and Execution Summary
 
-Run local PyTorch CUDA matmul and conv2d for each yaml op_name/dtype/shape, compare each GPU result to a CPU FP64 reference using rtol/atol, and emit pass_rate_percent plus error counts, to measure tensor-op numerical correctness. Does not invoke pytest or GitHub test_ops.py
+Run local PyTorch CUDA matmul and conv2d for each yaml op_name/dtype/shape, compare each GPU result to a CPU FP64 reference using rtol/atol, and emit pass_rate_percent plus error counts, to measure tensor-op numerical correctness
 
 ## Platform Portability
 
 - **AMD (primary):** ```bash
-Run local PyTorch CUDA matmul/conv2d correctness checks versus a CPU FP64 reference. Does not run pytest or the official PyTorch Operator Correctness test_ops.py suite
+Run scripts/collect_tensor_ops.py in the repo .venv: GPU matmul/conv2d vs CPU FP64 per op, dtype, and shape
 ```
 - **NVIDIA:** Native NVIDIA CUDA workload. Execute on the stated Ubuntu release with the host NVIDIA driver and CUDA userspace. ROCm porting notes do not apply.
 
