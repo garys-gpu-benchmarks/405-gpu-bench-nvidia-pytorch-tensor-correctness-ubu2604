@@ -40,6 +40,11 @@
     "value": "Run scripts/collect_tensor_ops.py in the repo .venv: GPU matmul/conv2d vs CPU FP64 per op, dtype, and shape"
   },
   {
+    "field_name": "Execution Description With Parameters",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Dispatches scripts/collect_tensor_ops.py to compare GPU matmul/conv2d against a CPU FP64 reference. device_id: torch CUDA device. op_name: yaml matmul,conv2d. dtype: yaml tokens f16_r, bf16_r, f32_r (smoke f16_r; baseline/extended f16_r,bf16_r,f32_r). shape: tensor dimensions. rtol/atol/. num_iterations: randomized inputs per case. seed: RNG seed"
+  },
+  {
     "field_name": "Metrics",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "#1: Max absolute error across correctness cases (max_abs_error); #2: Maximum relative L2 error (max_rel_error); #3: Tolerance-compliant case percentage (tolerance_compliance); #4: Test case coverage count (coverage_count); #5: Test case failure count (failure_count)"
@@ -173,11 +178,6 @@
     "field_name": "Command Methodology",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "For each yaml op_name, dtype, and shape, run the CUDA matmul or conv2d and compare it to a CPU FP64 reference using rtol and atol. Emit pass rate plus absolute error, relative error, coverage, and failure count"
-  },
-  {
-    "field_name": "Execution Description With Parameters",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Dispatches scripts/collect_tensor_ops.py to compare GPU matmul/conv2d against a CPU FP64 reference. device_id: torch CUDA device. op_name: yaml matmul,conv2d. dtype: yaml tokens f16_r, bf16_r, f32_r (smoke f16_r; baseline/extended f16_r,bf16_r,f32_r). shape: tensor dimensions. rtol/atol/. num_iterations: randomized inputs per case. seed: RNG seed"
   },
   {
     "field_name": "Execution Domain",
