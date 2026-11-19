@@ -3,17 +3,17 @@
 **Main goal:** Analyze tensor op numerical correctness  
 **Tools:** Run scripts/collect_tensor_ops.py in the repo .venv: GPU matmul/conv2d vs CPU FP64 per op, dtype, and shape
 
-Reference results measured by the maintainer on the system shown in each section (generator TEMPLATE_00_146 · recorded 2026-11-18). Your own runs write `results/RESULTS_ACTUAL.md` in the same format.
+Reference results measured by the maintainer on the system shown in each section (generator TEMPLATE_00_148 · recorded 2026-11-19). Your own runs write `results/RESULTS_ACTUAL.md` in the same format.
 
 > Smoke runs use deliberately small sizes. They check that the workload installs and runs end to end; their numbers are not performance results. Baseline and extended are.
 
 <!-- profile:smoke -->
 ## smoke
 
-- **System:** 1× NVIDIA H100 NVL (95830 MiB) · AMD EPYC 9374F 32-Core Processor · Ubuntu 26.04.1 LTS · kernel 6.8.0-138-generic · driver 595.112.07
-- **Run:** 2026-11-18T10:42:05Z · status **PASS** (exit 0)
-- **Time (mm:ss):** setup 01:15 · benchmark 00:04 · whole run 01:28
-- **Source:** run 405_20261118_104205
+- **System:** 1× NVIDIA H100 NVL (95830 MiB) · Intel(R) Xeon(R) Platinum 8452Y · Ubuntu 26.04.1 LTS · kernel 6.8.0-138-generic · driver 595.112.07
+- **Run:** 2026-11-19T15:05:23Z · status **PASS** (exit 0)
+- **Time (mm:ss):** setup 02:11 · benchmark 00:06 · whole run 02:27
+- **Source:** run 405_20261119_150523
 - **Command:** `bash run_benchmark.sh --smoke --device-id 0 --op-name matmul,conv2d --dtype f16_r --shape matmul=1x128x128;conv2d=1x3x32x32 --rtol 0.02 --atol 0.1 --num-iterations 2 --seed 42`
 
 | # | Metric | Result |
